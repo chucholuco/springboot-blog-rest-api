@@ -1,19 +1,18 @@
 package com.springboot.blog.service;
 
-import com.springboot.blog.entity.Comment;
-import com.springboot.blog.payload.CommentDto;
+import com.springboot.blog.payload.CommentDTO;
 
 import java.util.List;
 
 public interface CommentService {
 
-    CommentDto createComment(Long postId, CommentDto commentDto);
+    CommentDTO createComment(Long postId, CommentDTO commentDto);
 
-    List<CommentDto> getCommentsByPostId(Long postId);
+    List<CommentDTO> getCommentsByPostId(Long postId);
 
-    CommentDto getCommentById(Long postId, Long commentId);
+    CommentDTO getCommentById(Long postId, Long commentId);
 
-    CommentDto updateComment(Long postId, Long commentId, CommentDto commentRequest);
+    CommentDTO updateComment(Long postId, Long commentId, CommentDTO commentRequest);
 
     void deleteComment(Long postId, Long commentId);
 }

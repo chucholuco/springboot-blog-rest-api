@@ -1,12 +1,12 @@
 package com.springboot.blog.controller;
 
-import com.springboot.blog.entity.Comment;
-import com.springboot.blog.payload.CommentDto;
+import com.springboot.blog.payload.CommentDTO;
 import com.springboot.blog.service.CommentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,24 +20,24 @@ public class CommentController {
     }
 
     @PostMapping("/posts/{postId}/comments")
-    public ResponseEntity<CommentDto> createComment(@PathVariable("postId") Long postId, @RequestBody CommentDto commentDto) {
+    public ResponseEntity<CommentDTO> createComment(@PathVariable("postId") Long postId, @Valid @RequestBody CommentDTO commentDto) {
         return new ResponseEntity<>(commentService.createComment(postId, commentDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/posts/{postId}/comments")
-    public List<CommentDto> getCommentsByPostId(@PathVariable("postId") Long postId) {
+    public List<CommentDTO> getCommentsByPostId(@PathVariable("postId") Long postId) {
         return commentService.getCommentsByPostId(postId);
     }
 
     @GetMapping("/posts/{postId}/comments/{commentId}")
-    public ResponseEntity<CommentDto> getCommentById(@PathVariable("postId") Long postId, @PathVariable("commentId") Long commentId) {
+    public ResponseEntity<CommentDTO> getCommentById(@PathVariable("postId") Long postId, @PathVariable("commentId") Long commentId) {
         return ResponseEntity.ok(commentService.getCommentById(postId, commentId));
     }
 
     @PutMapping("/posts/{postId}/comments/{commentId}")
-    public ResponseEntity<CommentDto> updateComment(@PathVariable("postId") Long postId,
+    public ResponseEntity<CommentDTO> updateComment(@PathVariable("postId") Long postId,
                                                     @PathVariable("commentId") Long commentId,
-                                                    @RequestBody CommentDto commentRequest) {
+                                                    @Valid @RequestBody CommentDTO commentRequest) {
 
         return ResponseEntity.ok(commentService.updateComment(postId, commentId, commentRequest));
     }
