@@ -31,7 +31,6 @@ public class AuthController {
     private UserRepository userRepository;
     private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
-
     private final ModelMapper modelMapper;
 
     public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository,
