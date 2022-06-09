@@ -47,11 +47,12 @@ public class SecurityConfig {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
-                .antMatchers("/api/auth/**").permitAll()
-                .anyRequest()
-                .authenticated();
+                .authorizeRequests(authorize -> authorize
+                        .antMatchers(HttpMethod.GET, "/api/**").permitAll()
+                        .antMatchers("/api/auth/**").permitAll()
+                        .anyRequest()
+                        .authenticated()
+                );
 
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
