@@ -1,7 +1,6 @@
 package com.springboot.blog.controller;
 
 import com.springboot.blog.payload.PostDTO;
-import com.springboot.blog.payload.PostDTOV2;
 import com.springboot.blog.payload.PostResponse;
 import com.springboot.blog.service.PostService;
 
@@ -14,8 +13,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping()
@@ -44,20 +41,9 @@ public class PostController {
         return postService.getAllPosts(pageNo, pageSize, sortBy, sortDir);
     }
 
-    @GetMapping(value = "/api/posts/{id}", produces = "application/vnd.javaguides.v1+json")
+    @GetMapping(value = "/api/v1/posts/{id}")
     public ResponseEntity<PostDTO> getPostById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(postService.getPostById(id));
-    }
-    @GetMapping(value = "/api/posts/{id}", produces = "application/vnd.javaguides.v2+json")  //this is just for show a change of version of the API
-    public ResponseEntity<PostDTOV2> getPostByIdV2(@PathVariable("id") Long id) {
-        PostDTO postDTO = postService.getPostById(id);
-        PostDTOV2 postDTOV2 = modelMapper.map(postDTO, PostDTOV2.class);
-        List<String> tags = new ArrayList<>();
-        tags.add("Java");
-        tags.add("Spring Boot");
-        tags.add("AWS");
-        postDTOV2.setTags(tags);
-        return ResponseEntity.ok(postDTOV2);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
