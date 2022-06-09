@@ -44,11 +44,11 @@ public class PostController {
         return postService.getAllPosts(pageNo, pageSize, sortBy, sortDir);
     }
 
-    @GetMapping("/api/v1/posts/{id}")
+    @GetMapping(value = "/api/posts/{id}", params = "version=1")
     public ResponseEntity<PostDTO> getPostById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(postService.getPostById(id));
     }
-    @GetMapping("/api/v2/posts/{id}")  //this is just for show a change of version of the API
+    @GetMapping(value = "/api/posts/{id}", params = "version=2")  //this is just for show a change of version of the API
     public ResponseEntity<PostDTOV2> getPostByIdV2(@PathVariable("id") Long id) {
         PostDTO postDTO = postService.getPostById(id);
         PostDTOV2 postDTOV2 = modelMapper.map(postDTO, PostDTOV2.class);
