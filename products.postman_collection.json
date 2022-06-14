@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "6be004c6-7fb2-478c-a89f-54a91f931818",
+		"name": "products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12464516"
+	},
+	"item": [
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products/search?query=laptop",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "laptop"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZWR0ZXJlQGdtYWlsLmNvbSIsImlhdCI6MTY1NDkwNjA1MywiZXhwIjoxNjU1NTEwODUzfQ.INzCjC_sHkmxOGXRUT1GXiaN48iULucCGWg-1R_ooBb6l9BJQHI-UQxwh6ch5_-AJLaM4oTYpiislcri3AqlFg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sku\":\"45745\",\r\n    \"name\":\"lap\",\r\n    \"description\":\"a laptop\",\r\n    \"price\":\"5500.45\",\r\n    \"active\":true,\r\n    \"imageUrl\":\"http://www.photo.com/343\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upddate Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZWR0ZXJlQGdtYWlsLmNvbSIsImlhdCI6MTY1NDkwNjA1MywiZXhwIjoxNjU1NTEwODUzfQ.INzCjC_sHkmxOGXRUT1GXiaN48iULucCGWg-1R_ooBb6l9BJQHI-UQxwh6ch5_-AJLaM4oTYpiislcri3AqlFg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sku\":\"45745\",\r\n    \"name\":\"mug\",\r\n    \"description\":\"a mug\",\r\n    \"price\":\"50\",\r\n    \"active\":false,\r\n    \"imageUrl\":\"http://www.photo.com/343\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

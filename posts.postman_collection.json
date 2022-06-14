@@ -9,11 +9,21 @@
 		{
 			"name": "Create Post",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaHVjaG9sdWNvQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc0NjAyMSwiZXhwIjoxNjU1MzUwODIxfQ.7EiegQ9FYtPlwMYR1sgNmgrlFsjISAqsXyMXKa3pJ7K398aERhFDveotC25i1pXmihMaOt5i_8eh2FeXaSO48A",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\":\"My New aaaa Post\",\r\n    \"description\":\"Fourth Post description\",\r\n    \"content\":\"This is my new fourth post\"\r\n}",
+					"raw": "{\r\n    \"title\":\"New JWT Post\",\r\n    \"description\":\"Fourth Post description\",\r\n    \"content\":\"This is my new fourth post\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,7 +31,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/posts",
+					"raw": "http://localhost:8080/api/v1/posts",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -29,6 +39,7 @@
 					"port": "8080",
 					"path": [
 						"api",
+						"v1",
 						"posts"
 					]
 				}
@@ -41,7 +52,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/posts?pageNo=0&pageSize=4&sortBy=id&sortDir=desc",
+					"raw": "http://localhost:8080/api/v1/posts?pageNo=0&pageSize=4&sortBy=id&sortDir=desc",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -49,6 +60,7 @@
 					"port": "8080",
 					"path": [
 						"api",
+						"v1",
 						"posts"
 					],
 					"query": [
@@ -74,12 +86,15 @@
 			"response": []
 		},
 		{
-			"name": "Get Post By Id",
+			"name": "Get All Posts",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/posts/3",
+					"raw": "http://localhost:8080/api/v1/posts",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -87,8 +102,30 @@
 					"port": "8080",
 					"path": [
 						"api",
+						"v1",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
 						"posts",
-						"3"
+						"2"
 					]
 				}
 			},
@@ -109,7 +146,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/posts/3",
+					"raw": "http://localhost:8080/api/v1/posts/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -117,6 +154,7 @@
 					"port": "8080",
 					"path": [
 						"api",
+						"v1",
 						"posts",
 						"3"
 					]
@@ -127,10 +165,25 @@
 		{
 			"name": "Delete Post",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/posts/1",
+					"raw": "http://localhost:8080/api/v1/posts/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -138,8 +191,9 @@
 					"port": "8080",
 					"path": [
 						"api",
+						"v1",
 						"posts",
-						"1"
+						"3"
 					]
 				}
 			},
